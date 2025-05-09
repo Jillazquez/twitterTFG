@@ -1,0 +1,24 @@
+/* User.css */
+
+/* Estilo general para el contenedor del usuario */
+.user {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e1e8ed;
+}
+
+/* Estilo para la imagen de perfil */
+.user__profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Para hacerlo circular */
+    margin-right: 10px;
+}
+
+/* Estilo para el nombre de usuario */
+.user__username {
+    font-weight: bold;
+    margin: 0;
+    font-size: 16px; /* Ajusta el tamaño según tus preferencias */
+}

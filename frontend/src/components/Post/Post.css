@@ -1,0 +1,45 @@
+.post {
+  padding: 15px;
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.post__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.post__username {
+  font-weight: bold;
+  color: #14171a;
+  margin-right: 10px;
+}
+
+.post__timestamp {
+  color: #657786;
+  font-size: 12px;
+}
+
+.post__content {
+  font-size: 15px;
+  color: #14171a;
+  line-height: 1.5;
+}
+.post-username-link {
+  text-decoration: none; /* Elimina el subrayado */
+  color: inherit; /* Usa el color del elemento padre o define uno específico */
+  font-weight: bold; /* Opcional: hace que el nombre se vea más destacado */
+}
+
+/* Cambiar el color al pasar el mouse, si deseas */
+.post-username-link:hover {
+  color: #0056b3; /* O cualquier color que prefieras */
+  cursor: pointer; /* Cambia el cursor a puntero para resaltar que es un enlace */
+}
+.post-puntos{
+  transform: rotate(90deg);
+  margin-left: 98%;
+}
+.post-puntos:hover{
+  cursor: pointer;
+}

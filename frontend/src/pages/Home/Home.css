@@ -1,0 +1,64 @@
+/* Layout general */
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f5f8fa;
+}
+
+/* Menú lateral */
+.sidebar {
+  width: 250px;
+  background-color: white;
+  border-right: 1px solid #e1e8ed;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenido principal */
+.home {
+  flex: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  border-left: 1px solid #e1e8ed;
+  border-right: 1px solid #e1e8ed;
+  padding: 0;
+  background-color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Cabecera fija */
+.home__header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px solid #e1e8ed;
+  padding: 10px 15px;
+  z-index: 10;
+}
+
+.home__header h1 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Contenedor de publicaciones */
+.home__posts {
+  margin-top: 10px;
+}
+
+/* Usuarios aleatorios */
+.randomUsers {
+  position: fixed;
+  top: 20%;
+  right: 10px;
+  z-index: 1;
+}
+@media (max-width:1000px) {
+  .randomUsers{
+    display: none;
+  }
+}
