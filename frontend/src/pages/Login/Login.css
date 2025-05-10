@@ -1,79 +1,94 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f4ff; /* color fondo claro lavanda */
+}
+
+.login-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.login-image-side {
+  flex: 1;
+  background-image: url('src/assets/image.webp');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  /* se eliminaron los filtros */
+}
+
+.login-container {
+  flex: 1;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.05);
+}
+
+h1 {
+  font-size: 32px;
+  color: #9b5de5; /* púrpura principal */
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input-field {
+  border: 1px solid #e0c9f0;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: #f9f5ff;
+}
+
+.input-field:focus {
+  border-color: #9b5de5;
+  box-shadow: 0 0 5px rgba(155, 93, 229, 0.3);
+}
+
+.login-button {
+  background-color: #9b5de5;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.login-button:hover {
+  background-color: #7b39c8;
+}
+
+.signup {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #6e44ff;
+}
+
 .toggle-button {
-    background: none; /* Sin fondo */
-    color: #1da1f2; /* Color del texto */
-    border: none; /* Sin borde */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    text-decoration: underline; /* Subrayado para indicar interactividad */
-  }
-  
-  .toggle-button:hover {
-    color: #1991db; /* Color al pasar el ratón */
-  }
-  .login-container {
-    background-color: #ffffff; /* Color de fondo */
-    border: 1px solid #e1e8ed; /* Borde similar al de Twitter */
-    border-radius: 10px; /* Esquinas redondeadas */
-    padding: 20px; /* Espaciado interno */
-    width: 400px; /* Ancho del contenedor */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    display: flex;
-    flex-direction: column; /* Organiza elementos en columna */
-    align-items: center; /* Centra horizontalmente */
-    margin: auto; /* Centra el contenedor en la página */
-  }
-  
-  h1 {
-    font-size: 24px; /* Tamaño del título */
-    color: #1da1f2; /* Color del texto */
-    margin-bottom: 10px; /* Espacio debajo del título */
-  }
-  
-  .login-form {
-    width: 100%; /* Ancho completo */
-    display: flex;
-    flex-direction: column; /* Organiza elementos en columna */
-    gap: 15px; /* Espacio entre campos */
-  }
-  
-  .input-field {
-    border: 1px solid #e1e8ed; /* Borde del input */
-    border-radius: 8px; /* Esquinas redondeadas */
-    padding: 10px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño de fuente */
-    outline: none; /* Sin contorno en foco */
-    transition: border-color 0.2s; /* Transición suave */
-  }
-  
-  .input-field:focus {
-    border-color: #1da1f2; /* Color del borde al enfocar */
-    box-shadow: 0 0 5px rgba(29, 161, 242, 0.3); /* Sombra al enfocar */
-  }
-  
-  .signup {
-    margin-top: 15px; /* Espacio superior */
-  }
-  
-  .signup-link {
-    color: #1da1f2; /* Color del enlace */
-    text-decoration: none; /* Sin subrayado */
-  }
-  
-  .signup-link:hover {
-    text-decoration: underline; /* Subrayado al pasar el ratón */
-  }
-  
-  .login-button {
-    background-color: #1da1f2; /* Color de fondo del botón */
-    color: #ffffff; /* Color del texto */
-    border: none; /* Sin borde */
-    border-radius: 8px; /* Esquinas redondeadas */
-    padding: 10px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño de fuente */
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-    transition: background-color 0.2s; /* Transición suave */
-  }
-  
-  .login-button:hover {
-    background-color: #1991db; /* Color al pasar el ratón */
-  }
-    
+  background: none;
+  color: #9b5de5;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+.toggle-button:hover {
+  color: #7b39c8;
+}

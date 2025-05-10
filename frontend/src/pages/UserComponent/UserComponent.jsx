@@ -12,12 +12,37 @@ const UserComponent = () => {
   const [description, setDescription] = useState("");
   const [showButton, setShowButton] = useState(true);
   const { username } = useParams();
+  const  [ userPfp, setUserPfp] = useState("");
   const [posts, setPosts] = useState([]); 
   const [error, setError] = useState(null);
   const [user, setUser] = useState({
     username: "Usuario Desconocido",
     profilePicture: "https://via.placeholder.com/50",
   });
+
+  useEffect(() => {
+    fetchPosts();
+    getFollowers();
+    userInfo();
+    //VAMOS A VERIFICAR LOS USER
+    console.log("ESTO ES LA VARIABLE USERNAME"+username);
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const decodedToken = jwtDecode(token);
+        console.log("ESTO ES EL TOKEN usuario "+decodedToken.username);
+        setUser({
+          username: decodedToken.username || "Usuario Desconocido",
+          profilePicture: decodedToken.profilePicture || "https://via.placeholder.com/50",
+        });
+
+        console.log("ESTO es token despues de asignar "+decodedToken.username);
+        console.log("ESTO ES EL USER ASIGNADO "+username);
+      } catch (error) {
+        console.error("Error al decodificar el token", error);
+      }
+    }
+  }, []);
 
   // Función para obtener los posts
   const fetchPosts = async () => {
@@ -32,35 +57,14 @@ const UserComponent = () => {
   const userInfo = async () => {
     try {
       const response = await axios.get(`http://localhost:3000/api/users/userInfo?username=${username}`);
-      console.log("Esto es lo que envio");
-      console.log(username);
-      console.log(response.data);
+      console.log(response.data)
       setDescription(response.data.description);
-      setUser({
-        profilePicture: response.data.profilePicture,
-      });
+      setUserPfp(response.data.profilePicture);
     } catch (error) {
       console.error("Error al obtener la descripción del usuario", error);
     }
   }
 
-  useEffect(() => {
-    fetchPosts();
-    getFollowers();
-    userInfo();
-    const token = localStorage.getItem("token");
-    if (token) {
-      try {
-        const decodedToken = jwtDecode(token);
-        setUser({
-          username: decodedToken.username || "Usuario Desconocido",
-          profilePicture: decodedToken.profilePicture || "https://via.placeholder.com/50",
-        });
-      } catch (error) {
-        console.error("Error al decodificar el token", error);
-      }
-    }
-  }, []);
 
   // Verifica si el perfil en la URL es el mismo que el del usuario logueado
   useEffect(() => {
@@ -97,7 +101,6 @@ const UserComponent = () => {
       });
 
       getFollowers();
-      console.log(response.data.message);  // Mensaje de éxito
       setFollower(true);  // El usuario ahora sigue al otro
     
     } catch (error) {
@@ -127,7 +130,6 @@ const UserComponent = () => {
       });
 
       getFollowers();
-      console.log(response.data.message);
       setFollower(false);
     
     } catch (error) {
@@ -138,7 +140,7 @@ const UserComponent = () => {
   return (
     <>
       <div className="header">
-        <img src={user.profilePicture} alt="profile-picture" />
+        <img src={userPfp} alt="profile-picture" />
         <h1>{username}</h1>
         {showButton && (
           <button
