@@ -1,4 +1,73 @@
-.link{
-    text-decoration: none;
-    color: black;
+/* Sidebar (Menú lateral) */
+.sidebar {
+  width: 230px;
+  height: 100vh;
+  background-color: #F6F5F5; /* Fondo alternativo */
+  border-right: 1px solid #C0D6DF;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+/* Menú */
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #2E2E2E; /* Texto principal */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover de los items del menú */
+.menu-item:hover {
+  background-color: #693f9c;; /* Coral rosado */
+  color: #FFFFFF; /* Texto blanco en hover */
+}
+
+/* Icono del menú */
+.icon {
+  margin-right: 12px;
+  font-size: 20px;
+  color: #9B5DE5; /* Púrpura */
+}
+
+/* Estilo de texto de los enlaces */
+.text {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+}
+
+.text:hover {
+  color: #9B5DE5; /* Púrpura en hover */
+}
+
+/* Estilo del botón de cerrar sesión */
+.logout-button {
+  margin-top: auto;
+  padding: 12px;
+  background-color: #F25F5C; /* Error: rojo */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.logout-button:hover {
+  background-color: #F15BB5; /* Coral rosado al pasar el mouse */
 }

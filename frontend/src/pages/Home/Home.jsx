@@ -4,19 +4,18 @@ import { jwtDecode } from "jwt-decode";
 import Post from "../../components/Post/Post";
 import Poster from "../../components/Poster/Poster";
 import User from "../../components/User/User";
-import "./Home.css";
 import EditProfile from "../../components/EditProfile/EditProfile";
 import RandomUser from "../../components/RandomUser/RandomUser";
 import Loginpopup from "../../components/LoginPopup/LoginPopup";
+import "./Home.css";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [randomUsers, setRandomUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [showPopup,setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [user, setUser] = useState({
-    // Inicializa el estado del usuario
     username: "Usuario Desconocido",
     profilePicture: "https://via.placeholder.com/50",
   });
@@ -25,11 +24,11 @@ const Home = () => {
     localStorage.removeItem("token");
     window.location.reload();
   };
-  // Función get posts
+
   const fetchPosts = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/post");
-      setPosts(response.data);
+      const res = await axios.get("http://localhost:3000/api/post");
+      setPosts(res.data);
     } catch (err) {
       setError(err);
     } finally {
@@ -37,12 +36,11 @@ const Home = () => {
     }
   };
 
-  //Function to fetch the 3 random users
   const fetchRandomUsers = async () => {
-    try{
-      const response = await axios.get("http://localhost:3000/api/users/getRandomUsers");
-      setRandomUsers(response.data);
-    }catch(err){
+    try {
+      const res = await axios.get("http://localhost:3000/api/users/getRandomUsers");
+      setRandomUsers(res.data);
+    } catch (err) {
       setError(err);
     }
   };
@@ -50,28 +48,24 @@ const Home = () => {
   useEffect(() => {
     fetchPosts();
     fetchRandomUsers();
-    const token = localStorage.getItem("token"); //Get token
-    console.log(token);
 
+    const token = localStorage.getItem("token");
     if (token) {
       try {
-        const decodedToken = jwtDecode(token);
-        console.log(decodedToken);
-
+        const decoded = jwtDecode(token);
         setUser({
-          username: decodedToken.username || "Usuario Desconocido",
-          profilePicture:
-            decodedToken.profilePicture || "https://via.placeholder.com/50",
+          username: decoded.username || "Usuario Desconocido",
+          profilePicture: decoded.profilePicture || "https://via.placeholder.com/50",
         });
-      } catch (error) {
-        console.error("Error al decodificar el token", error);
+      } catch (err) {
+        console.error("Error al decodificar el token", err);
       }
     }
   }, []);
 
   if (loading) {
     return (
-      <div className="d-flex justify-content-center align-items-center vh-100">
+      <div className="loading-container">
         <div className="spinner-border text-primary" role="status"></div>
       </div>
     );
@@ -79,34 +73,36 @@ const Home = () => {
 
   if (error) return <div>{error.toString()}</div>;
 
-
   return (
     <div className="layout">
-      {/* Menú lateral */}
+      {/* Lado izquierdo */}
       <aside className="sidebar">
-        <EditProfile onLogout={handleLogout} username={user.username} setShowPopup={setShowPopup} />
+        <EditProfile
+          onLogout={handleLogout}
+          username={user.username}
+          setShowPopup={setShowPopup}
+        />
       </aside>
   
-      {/* Contenido principal */}
+      {/* Centro - feed */}
       <main className="home">
         <div className="home__header">
           <h1>Inicio</h1>
-          {showPopup ? <Loginpopup setShowPopup={setShowPopup} currentUsername={user.username} /> : null}
-
-          
-        </div>
-        <User username={user.username} profilePicture={user.profilePicture} />
-        <div className="randomUsers border border-primary rounded">
-          {randomUsers.map((randomUsers) => (
-            <RandomUser
-              key={randomUsers.__id}
-              username={randomUsers.name}
-              description={randomUsers.description}
-              profilePicture={randomUsers.profilePicture}
+          {showPopup && (
+            <Loginpopup
+              setShowPopup={setShowPopup}
+              currentUsername={user.username}
             />
-          ))}
+          )}
         </div>
+  
+        <User
+          username={user.username}
+          profilePicture={user.profilePicture}
+        />
+  
         <Poster addPost={(newPost) => setPosts([newPost, ...posts])} />
+  
         <div className="home__posts">
           {posts.map((post) => (
             <Post
@@ -118,9 +114,23 @@ const Home = () => {
           ))}
         </div>
       </main>
+  
+      {/* Lado derecho - usuarios recomendados */}
+      <aside className="rightbar">
+        <h3 className="rightbar-title">Usuarios sugeridos</h3>
+        <div className="randomUsers">
+          {randomUsers.map((u) => (
+            <RandomUser
+              key={u._id}
+              username={u.name}
+              description={u.description}
+              profilePicture={u.profilePicture}
+            />
+          ))}
+        </div>
+      </aside>
     </div>
   );
-  
-};
+};  
 
 export default Home;

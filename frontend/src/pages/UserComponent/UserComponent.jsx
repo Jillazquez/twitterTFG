@@ -138,24 +138,30 @@ const UserComponent = () => {
   };
 
   return (
-    <>
-      <div className="header">
-        <img src={userPfp} alt="profile-picture" />
-        <h1>{username}</h1>
-        {showButton && (
-          <button
-            className="btn btn-outline-primary"
-            onClick={follower ? handleUnfollow : handleFollow}
-          >
-            {follower ? "Unfollow" : "Follow"}
-          </button>
-        )}
-        <p><NumberFlow value={followers} /> {followers > 1?"followers":"follower"}</p>
+    <div className="user-component">
+      {/* Sección superior: información de perfil */}
+      <div className="profile-section">
+        <img src={userPfp} alt="profile" className="profile-image" />
+        <div className="profile-info">
+          <h1>{username}</h1>
+          <p className="description-text">{description}</p>
+          <p className="followers-count">
+            <NumberFlow value={followers} /> {followers === 1 ? "follower" : "followers"}
+          </p>
+          {showButton && (
+            <button
+              className="btn btn-outline-primary"
+              onClick={follower ? handleUnfollow : handleFollow}
+            >
+              {follower ? "Unfollow" : "Follow"}
+            </button>
+          )}
+        </div>
       </div>
-      <div className="description">
-        <p>{description}</p>
-      </div>
-      <div className="post">
+  
+      {/* Sección inferior: publicaciones */}
+      <div className="posts-section">
+        <h2 className="posts-title">Publicaciones</h2>
         <div className="home__posts">
           {posts.map((post) => (
             <Post
@@ -167,7 +173,7 @@ const UserComponent = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { jwtDecode } from "jwt-decode"; // Asegúrate de no usar destructuración aquí
-import './Poster.css'; // Archivo de estilos para Poster
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { jwtDecode } from 'jwt-decode';
+import './Poster.css';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Poster = ({ addPost }) => {
   const [content, setContent] = useState('');
@@ -20,33 +20,31 @@ const Poster = ({ addPost }) => {
 
     if (content.trim() === '') return;
 
-    // Decodificar el token para obtener el username
-    const decodedToken = jwtDecode(token);
-
-    
-    console.log(decodedToken.id)
     try {
-      // Enviar el post al backend con el token en el header
-      const response = await axios.post('http://localhost:3000/api/post', {
-        content,
-        author: decodedToken.id // Obtener el username desde el token decodificado
-      }, {
-        headers: {
-          Authorization: `Bearer ${token}` // Asegurarse de enviar el token en el header
+      const decodedToken = jwtDecode(token);
+      const response = await axios.post(
+        'http://localhost:3000/api/post',
+        {
+          content,
+          author: decodedToken.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      });
+      );
 
-      // Si se creó correctamente el post
-      addPost(response.data); 
-      setContent(''); // Limpiar el textarea
+      addPost(response.data);
+      setContent('');
       toast.success('Post creado correctamente');
     } catch (err) {
-      toast.error(response.data);
+      toast.error('Error al publicar');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="poster">
+    <form onSubmit={handleSubmit} className="poster card">
       <textarea
         className="poster__textarea"
         value={content}
@@ -54,9 +52,10 @@ const Poster = ({ addPost }) => {
         placeholder="¿Qué está pasando?"
       />
       <div className="poster__footer">
-        <button type="submit" className="poster__button">Twittear</button>
+        <button type="submit" className="poster__button">Publicar</button>
       </div>
-      {error && <div>{error}</div>}
+      {error && <div className="poster__error">{error}</div>}
+      <ToastContainer />
     </form>
   );
 };
