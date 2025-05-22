@@ -90,3 +90,29 @@
 .post__dropdown-item:hover {
   background-color: #fce4ec;
 }
+
+.post__actions {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.post__like-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: none;
+  color: #7b39c8;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.post__like-button:hover {
+  transform: scale(1.05);
+}
+
+.post__like-button .liked {
+  color: #d63384;
+}

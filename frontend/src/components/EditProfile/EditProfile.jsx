@@ -12,10 +12,6 @@ const EditProfile = ({ onLogout, setShowPopup, username }) => {
           <Link className="text" to="/home">Inicio</Link>
         </li>
         <li className="menu-item">
-          <BsEnvelope className="icon" />
-          <Link className="text" to="/chat">Mensajes</Link>
-        </li>
-        <li className="menu-item">
           <BsPerson className="icon" />
           <Link className="text" to={`/user/${username}`}>Perfil</Link>
         </li>

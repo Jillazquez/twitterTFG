@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const {  } = require('../controllers/postController');
-const protect = require('../middleware/authMiddleware');
+const { getReportedPosts, reportPost } = require('../controllers/postReportedController');
+const protect = require('../middleware/authMiddleware'); // middleware que verifica si el usuario está logueado
 
-router.get('/',getPosts);
-router.post('/',protect,createPost);
-router.get('/name/:name', getUserPostsByName);
+router.get('/', protect, getReportedPosts); // Solo admins pueden obtener reportes
+router.post('/report', protect, reportPost); // Cualquier usuario logueado puede reportar
 
 module.exports = router;

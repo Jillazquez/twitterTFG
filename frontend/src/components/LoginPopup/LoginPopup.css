@@ -1,6 +1,4 @@
-/* LoginPopup.css */
-
-/* Contenedor principal del popup */
+/* Paleta Solar Mist */
 .popup-container {
   position: fixed;
   top: 0;
@@ -15,115 +13,133 @@
 }
 
 .popup-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 700px;
+  background-color: #FDFDFD;
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 720px;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  color: #2E2E2E;
 }
 
 .popup-cross {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   cursor: pointer;
   width: 20px;
   height: 20px;
 }
 
-/* Diseño del cuerpo del popup */
 .popup-body {
   display: flex;
   width: 100%;
+  margin-top: 20px;
 }
 
-/* Sección izquierda (opciones al estilo Twitter) */
 .popup-options {
   width: 30%;
-  padding-right: 20px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .popup-options button {
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-  margin-bottom: 10px;
+  padding: 12px;
   border: none;
   background-color: transparent;
-  color: #333;
-  border-radius: 25px;
-  font-size: 1rem;
+  border-radius: 12px;
+  font-weight: bold;
+  color: #6C6C6C;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
+  transition: all 0.3s;
 }
 
-.popup-options button img {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-}
-
-.popup-options button:hover {
-  background-color: #e8f5fe;
-  color: #1da1f2;
-}
-
-.popup-options .active {
-  background-color: #1da1f2;
+.popup-options button.active {
+  background-color: #9B5DE5;
   color: white;
 }
 
-.popup-options .active img {
-  filter: brightness(0) invert(1);
+.popup-options button:hover {
+  background-color: #F15BB5;
+  color: white;
 }
 
 .popup-form {
   width: 70%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 300px;
-  overflow-y: auto;
-  box-sizing: border-box;
+  padding-left: 20px;
 }
 
 .form-group {
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 input, textarea {
-  width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  border: 1px solid #C0D6DF;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #F6F5F5;
+  color: #2E2E2E;
 }
 
-.preview-img {
-  width: 150px;
-  height: 150px;
-  margin-top: 10px;
-  border-radius: 50%;
-  object-fit: cover;
+textarea {
+  resize: none;
 }
 
-.submit-button {
-  background-color: #1da1f2;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 25px;
+.image-upload-box {
+  border: 2px dashed #9B5DE5;
+  background-color: #F6F5F5;
+  padding: 30px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.image-upload-box:hover {
+  background-color: #F15BB5;
+}
+
+.image-upload-text {
+  color: #9B5DE5;
+  font-weight: bold;
   font-size: 1rem;
   text-align: center;
 }
 
+.file-input {
+  display: none;
+}
+
+.preview-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 10px;
+  border: 2px solid #F15BB5;
+}
+
+.submit-button {
+  background-color: #9B5DE5;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
 .submit-button:hover {
-  background-color: #0d95e8;
+  background-color: #F15BB5;
 }

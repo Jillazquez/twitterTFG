@@ -56,7 +56,7 @@
 
 /* Estilo del botón de cerrar sesión */
 .logout-button {
-  margin-top: auto;
+  margin-top: 600px;
   padding: 12px;
   background-color: #F25F5C; /* Error: rojo */
   color: white;

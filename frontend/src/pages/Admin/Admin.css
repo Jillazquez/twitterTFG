@@ -1,0 +1,66 @@
+.reported-posts-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #faf8ff;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 3px 15px rgba(123, 57, 200, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #3c1361;
+  }
+  
+  h1 {
+    color: #7b39c8;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  
+  .reports-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .report-card {
+    background: white;
+    border: 1px solid #e6d6f9;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 8px rgba(123, 57, 200, 0.05);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .report-card:hover {
+    box-shadow: 0 5px 20px rgba(123, 57, 200, 0.15);
+  }
+  
+  .post-info,
+  .reporter-info,
+  .report-date {
+    margin-bottom: 8px;
+    font-size: 15px;
+  }
+  
+  .btn-delete {
+    background-color: #7b39c8;
+    border: none;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-delete:hover {
+    background-color: #601ab4;
+  }
+  
+  .loading,
+  .error {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 18px;
+    color: #7b39c8;
+  }
+  

@@ -12,6 +12,7 @@ import UserComponent from "./pages/UserComponent/UserComponent"
 import MessagesPage from "./pages/MessagePage/MessagePage";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Admin from "./pages/Admin/Admin";
 
 
 function App() {
@@ -44,6 +45,13 @@ function App() {
               <Protect>
                 <MessagesPage />
               </Protect>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+                <Admin />
+
             }
           />
         </Routes>

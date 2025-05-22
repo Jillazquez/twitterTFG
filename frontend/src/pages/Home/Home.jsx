@@ -20,7 +20,16 @@ const Home = () => {
     profilePicture: "https://via.placeholder.com/50",
   });
 
-  const handleLogout = () => {
+  const handleLogout = () => {  const fetchPosts = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/api/post");
+      setPosts(res.data);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
     localStorage.removeItem("token");
     window.location.reload();
   };
@@ -104,14 +113,18 @@ const Home = () => {
         <Poster addPost={(newPost) => setPosts([newPost, ...posts])} />
   
         <div className="home__posts">
-          {posts.map((post) => (
-            <Post
-              key={post._id}
-              username={post.author?.name || "Usuario Desconocido"}
-              content={post.content}
-              timestamp={new Date(post.createdAt).toLocaleString()}
-            />
-          ))}
+        {posts.map(post => (
+          <Post
+            key={post._id}
+            postId={post._id}
+            username={post.author.name}
+            content={post.content}
+            timestamp={new Date(post.createdAt).toLocaleString()}
+            initialLikes={post.likes} 
+            currentUser={user.username}
+          />
+        ))}
+
         </div>
       </main>
   

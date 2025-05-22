@@ -163,14 +163,17 @@ const UserComponent = () => {
       <div className="posts-section">
         <h2 className="posts-title">Publicaciones</h2>
         <div className="home__posts">
-          {posts.map((post) => (
-            <Post
-              key={post._id}
-              username={post.author?.name || "Usuario Desconocido"}
-              content={post.content}
-              timestamp={new Date(post.createdAt).toLocaleString()}
-            />
-          ))}
+        {posts.map(post => (
+          <Post
+            key={post._id}
+            postId={post._id}
+            username={post.author.name}
+            content={post.content}
+            timestamp={new Date(post.createdAt).toLocaleString()}
+            initialLikes={post.likes} 
+            currentUser={user.username}
+          />
+        ))}
         </div>
       </div>
     </div>
