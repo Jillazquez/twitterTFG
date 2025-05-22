@@ -21,11 +21,7 @@ pipeline {
             steps {
                 sh '''
                 docker rm -f frontend-container || true
-                docker run -d --name frontend-container -p 5173:5173 \
-                  -v ${WORKSPACE}/frontend:/app \
-                  -w /app \
-                  node:18-alpine \
-                  sh -c "npm install && npm run dev"
+                docker run -d --name frontend-container -p 5173:5173 -v $WORKSPACE/frontend:/app -w /app node:18-alpine sh -c "npm install && npm run dev -- --host 0.0.0.0"
                 '''
             }
         }
