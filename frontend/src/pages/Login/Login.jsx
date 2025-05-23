@@ -40,7 +40,7 @@ const Login = () => {
         const { token, user } = response.data;
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
-        navigate('/home');
+        window.location.reload();
       } catch (error) {
         console.log('Hubo un problema al crear la cuenta. Intenta de nuevo.', error.message);
       }

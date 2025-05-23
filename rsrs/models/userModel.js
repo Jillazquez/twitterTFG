@@ -17,10 +17,10 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     followers: [
-        { type: mongoose.Schema.Types.ObjectId, ref: 'User' }  // Usuarios que siguen a este usuario
+        { type: mongoose.Schema.Types.ObjectId, ref: 'User' }  
     ],
     following: [
-        { type: mongoose.Schema.Types.ObjectId, ref: 'User' }  // Usuarios que este usuario sigue
+        { type: mongoose.Schema.Types.ObjectId, ref: 'User' }  
     ],
     profilePicture: { 
         type: String, default: '' 
@@ -30,27 +30,6 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-// Middleware para encriptar la contraseña antes de guardar el usuario
-userSchema.pre('save', async function (next) {
-    const user = this;
-
-    // Solo hashear si la contraseña ha sido modificada o es nueva
-    if (!user.isModified('password')) return next();
-
-    try {
-        // Generar el salt
-        const salt = await bcrypt.genSalt(10);
-
-        // Hashear la contraseña
-        user.password = await bcrypt.hash(user.password, salt);
-
-        next();
-    } catch (error) {
-        return next(error);
-    }
-});
-
-// Método para comparar contraseñas
 userSchema.methods.comparePassword = async function (candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password);
 };
