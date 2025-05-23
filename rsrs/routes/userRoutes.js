@@ -3,18 +3,18 @@ const multer = require('multer');
 const { 
     createUser, getUsers, loginUser, followUser, unfollowUser, 
     isFollowing, getNumberFollowers, randomUsers, changeDescription, 
-    userInfo, updateProfilePicture 
+    userInfo, updateProfilePicture , changeUsername
 } = require('../controllers/userController');
 const cloudinary = require('../config/cloudinaryConfig'); 
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 
 const router = express.Router();
 
-// Configurar Multer para subir archivos a Cloudinary
+
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        folder: 'profile_pictures', // Carpeta en Cloudinary
+        folder: 'profile_pictures', 
         allowed_formats: ['jpg', 'png', 'jpeg']
     }
 });
@@ -30,8 +30,8 @@ router.post('/getFollowers', getNumberFollowers);
 router.get('/getRandomUsers', randomUsers);
 router.post('/changeDescription', changeDescription);
 router.get('/userInfo', userInfo);
+router.post('/changeUsername',changeUsername)
 
-// Nueva ruta para actualizar la foto de perfil
 router.post('/updateProfilePicture', upload.single('profilePicture'), updateProfilePicture);
 
 module.exports = router;

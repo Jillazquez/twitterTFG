@@ -36,7 +36,16 @@ const LoginPopup = ({ currentUsername, currentProfilePicture, onUpdateProfile, s
 
         toast.success("Foto de perfil actualizada correctamente");
       } else if (selectedOption === "username") {
-        // Aquí se puede agregar lógica para actualizar el username
+        if (!newUsername) return toast.error("Selecciona un nombre de usuario");
+
+        await axios.post('http://localhost:3000/api/users/changeUsername', {
+          newUsername: newUsername,
+          username: currentUsername
+        });
+        localStorage.removeItem("token");
+        window.location.reload();
+        toast.success("Nombre de usuario actualizado correctamente");
+       
       }
 
       setShowPopup(false);

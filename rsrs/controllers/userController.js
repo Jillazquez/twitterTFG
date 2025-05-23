@@ -254,3 +254,29 @@ exports.updateProfilePicture = async (req, res) => {
         return res.status(500).json({ message: "Error al actualizar la foto de perfil", error: error.message });
     }
 };
+
+//CAmbioar nombre de perfil
+exports.changeUsername = async (req, res) => {
+    try {
+        const { username,newUsername } = req.body;
+
+        if (!username || !newUsername) {
+            return res.status(400).json({ message: 'Faltan datos en el cuerpo de la solicitud' });
+        }
+
+        const usuario = await User.findOne({ name: username });
+
+        if (!usuario) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        usuario.name = newUsername;
+
+        await usuario.save();
+
+        return res.status(200).json({ message: 'Nombre de usuario actualizado exitosamente', user: { username: newUsername } });
+
+    } catch (err) {
+        return res.status(500).json({ message: "Error al cambiar el nombre de usuario", error: err.message });
+    }
+};
