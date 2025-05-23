@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "68309794f4badee11b44a636"
+  },
+  "content": "esto rima\ncon prima",
+  "author": {
+    "$oid": "68309701f4badee11b44a62f"
+  },
+  "likes": [
+    {
+      "$oid": "68309701f4badee11b44a62f"
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-05-23T15:43:16.443Z"
+  },
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6830982cf4badee11b44a65d"
+  },
+  "content": "esto rima\ncon prima",
+  "author": {
+    "$oid": "683097bff4badee11b44a64e"
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2025-05-23T15:45:48.675Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6830986af4badee11b44a667"
+  },
+  "content": "esto rima\ncon prima",
+  "author": {
+    "$oid": "683097bff4badee11b44a64e"
+  },
+  "likes": [],
+  "createdAt": {
+    "$date": "2025-05-23T15:46:50.253Z"
+  },
+  "__v": 0
+}]

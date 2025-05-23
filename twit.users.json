@@ -1,0 +1,52 @@
+[{
+  "_id": {
+    "$oid": "68309701f4badee11b44a62f"
+  },
+  "name": "test",
+  "email": "test@test.com",
+  "password": "$2a$10$ZdqwfAq4m2QlMlXaRxHA3OJnFAPNJl5W9g8os9Ad.sqr5C.OWiWAy",
+  "followers": [],
+  "following": [],
+  "profilePicture": "https://res.cloudinary.com/dogsbm3sr/image/upload/v1748015011/profile_pictures/cmdn6jm98bhjo8rvzltw.jpg",
+  "description": "",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683097bff4badee11b44a64e"
+  },
+  "name": "pim",
+  "email": "pim@pim.com",
+  "password": "$2a$10$0eS5jU/5iJjIaianFX7SmeLPyjK5qfUP.24cbG2d6yq72kMLXm0Um",
+  "followers": [],
+  "following": [],
+  "profilePicture": "",
+  "description": "",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6830987bf4badee11b44a673"
+  },
+  "name": "pam",
+  "email": "pam@pam.com",
+  "password": "$2a$10$I29QodflEWWH4Zvu2rjh7e4qs.mlAjRJkeJC5qhpD6D4OL7h8n0r2",
+  "followers": [],
+  "following": [],
+  "profilePicture": "",
+  "description": "",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "683098b3f4badee11b44a679"
+  },
+  "name": "ejemplo",
+  "email": "ejemplo@ejemplo.com",
+  "password": "$2a$10$akIX0QR3eFG7ZnZO6lVV6uMS35AlglEb2N3f4xM./c.bO/3u5aMnK",
+  "followers": [],
+  "following": [],
+  "profilePicture": "https://res.cloudinary.com/dogsbm3sr/image/upload/v1748015323/profile_pictures/jqdvfoopnetwhz8qcowd.jpg",
+  "description": "",
+  "__v": 0
+}]

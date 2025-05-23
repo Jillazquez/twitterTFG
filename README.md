@@ -31,6 +31,17 @@ cd twitterTFG
 ```
 
 ---
+### MONGO
+Crear un contenedor de docker de mongo para conectarse a la base de datos desde la aplicacion o usar mongo instalado 
+´´´bash
+docker run -d 
+  --name mongodb-twittertfg 
+  -p 27017:27017 
+  -v mongo_data:/data/db 
+  mongo:latest
+´´´
+En caso de no usar este contenedor revisar si los puertos coinciden con los usados en el contenedor
+junto al proyecto vienen dos archivos para importar en la base de datos no es obligatorio pero recomendable (en caso de hacerlo la contraseña de los usuarios es igual que el nombre de los usuarios)
 
 ### Backend
 
