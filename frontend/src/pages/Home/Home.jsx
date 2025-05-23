@@ -105,10 +105,6 @@ const Home = () => {
           )}
         </div>
   
-        <User
-          username={user.username}
-          profilePicture={user.profilePicture}
-        />
   
         <Poster addPost={(newPost) => setPosts([newPost, ...posts])} />
   

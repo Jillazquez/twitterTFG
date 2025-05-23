@@ -121,8 +121,9 @@ exports.unfollowUser = async (req, res) => {
 exports.createUser = async (req,res) => {
     try{
         //First we check if the user already exists
-        const { username,email,password} = req.body;
+        const { name,email,password} = req.body;
         const alreadyRegister = await User.findOne({email})
+        console.log(req.body);
         if(alreadyRegister){
             return res.status(400).json({message:"El usuario ya existe"});
         }

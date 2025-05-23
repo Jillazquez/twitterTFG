@@ -38,6 +38,7 @@ const Poster = ({ addPost }) => {
       addPost(response.data);
       setContent('');
       toast.success('Post creado correctamente');
+      window.location.reload();
     } catch (err) {
       toast.error('Error al publicar');
     }

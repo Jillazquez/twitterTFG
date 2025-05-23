@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
-  const [username, setUsername] = useState('');
+  const [name, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   
@@ -36,7 +36,7 @@ const Login = () => {
       }
     } else {
       try {
-        const response = await axios.post('http://localhost:3000/api/users/register', { username, email, password });
+        const response = await axios.post('http://localhost:3000/api/users/register', { name, email, password });
         const { token, user } = response.data;
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
@@ -61,7 +61,7 @@ const Login = () => {
               type="text"
               className="input-field"
               placeholder="Nombre de usuario"
-              value={username}
+              value={name}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
